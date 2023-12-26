@@ -1,28 +1,34 @@
-package AbstractPrograms;
+package InterfacePrograms;
 import java.util.Scanner;
-public class SavingsAccount extends BankAccount {
+public class SavingsAccount implements Accounts{
+double deposits,withdraws,interest,balance;
+Scanner sc = new Scanner(System.in);
+@Override
+	public void deposit() {
+		System.out.print("Enter the Amount to be Deposited to Savings Account : ");
+		deposits = sc.nextDouble();
+		System.out.println("Amount of RS."+deposits+" Deposited Successfully ");
+}
 
-	int dp,wd,balance; 
 	@Override
-	void deposit() {
-		// TODO Auto-generated method stub
-		
-		Scanner sc = new Scanner(System.in);
-		System.out.print("Enter the Deposit Ammount : ");
-		dp = sc.nextInt();
-		System.out.println("Amount Of Rs."+dp+" is Deposited Successfully ");
+	public void withdraw() {
+		System.out.print("Enter the Amount to be Withdrawn from Savings Account : ");
+		withdraws = sc.nextDouble();
+		System.out.println("Amount of RS."+withdraws+" Debited Successfully ");
 	}
 
 	@Override
-	void withdraw() {
-		// TODO Auto-generated method stub
+	public void calculateInterest() {
+		interest = balance*0.02;
+	System.out.println("Interest Amount is RS."+interest+" Deposited Successfully ");
 		
-		Scanner sc = new Scanner(System.in);
-		System.out.print("Enter the Ammount to Withdraw: ");
-		wd = sc.nextInt();
-		System.out.println("Amount Of Rs."+wd+" has been debited / Withdrawn Successfully ");
-		balance = dp-wd;
-		System.out.println("Your Current Balance is : Rs."+balance);
+	}
+
+	@Override
+	public void viewBalance() {
+		
+		balance = (deposits + interest) - withdraws;
+		System.out.println("Total Balance in the SavingsAccount is RS."+balance+" Balance Fetched Successfully ");		
 	}
 
 }
